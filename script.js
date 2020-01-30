@@ -1,9 +1,6 @@
 class App {
   constructor() {
     this.books = [];
-    this.title = "";
-    this.author = "";
-    this.pages = 0;
 
     this.$form = document.querySelector("form");
     this.$newButton = document.querySelector(".new-book-button");
@@ -13,10 +10,14 @@ class App {
     this.$bookAuthor = document.querySelector(".modal-author");
     this.$bookPages = document.querySelector(".modal-pages");
     this.$books = document.querySelector(".books");
+    this.$body = document.querySelector("body");
 
     this.addEventListeners();
   }
   addEventListeners() {
+    this.$body.addEventListener("click", event => {
+      this.deleteBook(event);
+    });
     this.$newButton.addEventListener("click", event => {
       this.openModal();
     });
@@ -49,7 +50,8 @@ class App {
     const newBook = {
       title,
       author,
-      pages
+      pages,
+      id: this.books.length > 0 ? this.books[this.books.length - 1].id + 1 : 1
     };
     this.books = [...this.books, newBook];
     this.displayCard();
@@ -59,7 +61,7 @@ class App {
     this.$books.innerHTML = this.books.map(
       book =>
         `
-      <div class="book-card">
+      <div class="book-card" data-id="${book.id}">
         <div class="book-info">
           <p class="book-title">${book.title}</p>
           <p class="book-author">Written by ${book.author}</p>
@@ -74,6 +76,15 @@ class App {
       </div>
       `
     );
+  }
+  deleteBook(event) {
+    this.$selectedElement = event.target.matches(".toolbar-delete");
+    if (!this.$selectedElement) return;
+    this.$bookToDelete = event.target.closest(".book-card");
+    this.books = this.books.filter(
+      book => book.id != this.$bookToDelete.dataset.id
+    );
+    this.displayCard();
   }
 }
 
