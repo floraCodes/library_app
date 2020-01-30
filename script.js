@@ -81,7 +81,6 @@ class App {
     );
   }
   deleteBook(event) {
-    console.log("clicked");
     const selectedBook = event.target.closest(".book-card");
     console.log(selectedBook);
   }
