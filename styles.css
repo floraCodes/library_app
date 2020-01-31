@@ -10,6 +10,9 @@ h1 {
   padding-left: 1.5em;
   margin-bottom: 0;
 }
+.modal-content p {
+  color: aliceblue;
+}
 .new-book-button {
   font-family: "Segoe UI", sans-serif;
   margin-left: 5em;
@@ -90,4 +93,14 @@ h1 {
 .book-card:hover .toolbar-container {
   opacity: 1;
   transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.read-status-button {
+  text-decoration: none;
+  color: #ffffff;
+  background: linear-gradient(to bottom, #b8e356 5%, #a5cc52 100%);
+  background-color: #b8e356;
+}
+.unread-status {
+  background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+  background-color: #7892c2;
 }

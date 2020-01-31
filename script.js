@@ -17,6 +17,7 @@ class App {
   addEventListeners() {
     this.$body.addEventListener("click", event => {
       this.deleteBook(event);
+      this.readStatus(event);
     });
     this.$newButton.addEventListener("click", event => {
       this.openModal();
@@ -66,7 +67,7 @@ class App {
           <p class="book-title">${book.title}</p>
           <p class="book-author">Written by ${book.author}</p>
           <p class="book-pages">${book.pages} pages.</p>
-          <button class="read-status-button">Read</button>
+          <button class="read-status-button unread-status">Unread</button>
         </div>
         <div class="toolbar-container">
           <div class="toolbar">
@@ -78,13 +79,22 @@ class App {
     );
   }
   deleteBook(event) {
-    this.$selectedElement = event.target.matches(".toolbar-delete");
-    if (!this.$selectedElement) return;
-    this.$bookToDelete = event.target.closest(".book-card");
-    this.books = this.books.filter(
-      book => book.id != this.$bookToDelete.dataset.id
-    );
+    const selectedElementMatches = event.target.matches(".toolbar-delete");
+    if (!selectedElementMatches) return;
+    const $bookToDelete = event.target.closest(".book-card");
+    this.books = this.books.filter(book => book.id != $bookToDelete.dataset.id);
     this.displayCard();
+  }
+  readStatus(event) {
+    const selectedElementMatches = event.target.matches(".read-status-button");
+    const $clickedButton = event.target;
+    if (!selectedElementMatches) return;
+    $clickedButton.classList.toggle("unread-status");
+    if (event.target.matches("unread-status")) {
+      $clickedButton.innerHTML = "Unread";
+    } else {
+      $clickedButton.innerHTML = "Read";
+    }
   }
 }
 
