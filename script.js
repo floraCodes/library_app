@@ -90,7 +90,7 @@ class App {
     const $clickedButton = event.target;
     if (!selectedElementMatches) return;
     $clickedButton.classList.toggle("unread-status");
-    if (event.target.matches("unread-status")) {
+    if (event.target.matches(".unread-status")) {
       $clickedButton.innerHTML = "Unread";
     } else {
       $clickedButton.innerHTML = "Read";
