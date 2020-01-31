@@ -1,6 +1,6 @@
 class App {
   constructor() {
-    this.books = [];
+    this.books = JSON.parse(localStorage.getItem("books")) || [];
     this.$form = document.querySelector("form");
     this.$newButton = document.querySelector(".new-book-button");
     this.$modal = document.querySelector(".modal");
@@ -10,6 +10,7 @@ class App {
     this.$bookPages = document.querySelector(".modal-pages");
     this.$books = document.querySelector(".books");
     this.$body = document.querySelector("body");
+    this.displayCard();
     this.addEventListeners();
   }
 
@@ -63,6 +64,7 @@ class App {
   }
 
   displayCard() {
+    this.saveBooks();
     this.$books.innerHTML = this.books.map(
       book => `
       <div class="book-card" data-id="${book.id}">
@@ -108,6 +110,9 @@ class App {
       }
     });
     this.displayCard();
+  }
+  saveBooks() {
+    localStorage.setItem("books", JSON.stringify(this.books));
   }
 }
 
