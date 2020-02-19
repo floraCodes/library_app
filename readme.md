@@ -1,7 +1,8 @@
-The Odin Project: JAVASCRIPT
-Status: FINISHED
 
-Project: LIBRARY
-https://www.theodinproject.com/courses/javascript/lessons/library?ref=lnav
+<h1>The Odin Project: JS LIBRARY</h1>
 
-Live Demo: https://library-app.now.sh/
+<h2>Live Demo: https://library-app.now.sh/</h2>
+
+<h3>Status: FINISHED</h3>
+
+
