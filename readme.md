@@ -1,7 +1,7 @@
 # Library App
 
 This library app allows you to add books to your own virtual library.
-Youcan find a live version [HERE](https://library-app.now.sh/)
+You can find a live version [HERE](https://library-app.now.sh/)
 
 - Click on New Book (top left) to add a new book.
 - Add the title, author and number of pages of the book.
